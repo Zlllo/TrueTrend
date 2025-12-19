@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   TrueTrend CN - 赛博朋克/新粗野主义全局样式
+   ============================================================ */
+
+:root {
+  --cyber-dark: #0a0a0f;
+  --cyber-surface: #12121a;
+  --cyber-border: #1f1f2e;
+  --neon-green: #00ff9f;
+  --neon-pink: #ff00ff;
+  --neon-blue: #00d4ff;
+  --neon-red: #ff3366;
+}
+
+/* 基础样式重置 */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--cyber-dark);
+  color: #e0e0e0;
+}
+
+body {
+  background: 
+    linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #0a0a0f 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 159, 0.03) 2px,
+      rgba(0, 255, 159, 0.03) 4px
+    );
+  background-attachment: fixed;
+}
+
+/* 扫描线效果 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  z-index: 9999;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cyber-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon-green);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-pink);
+}
+
+/* ============================================================
+   组件样式
+   ============================================================ */
+
+@layer components {
+  /* 霓虹边框卡片 */
+  .neon-card {
+    @apply bg-cyber-surface border border-cyber-border rounded-lg p-4;
+    box-shadow: 
+      0 0 10px rgba(0, 255, 159, 0.1),
+      inset 0 0 20px rgba(0, 255, 159, 0.05);
+  }
+
+  .neon-card:hover {
+    box-shadow: 
+      0 0 20px rgba(0, 255, 159, 0.2),
+      inset 0 0 30px rgba(0, 255, 159, 0.1);
+  }
+
+  /* 霓虹文字 */
+  .neon-text {
+    text-shadow: 
+      0 0 7px var(--neon-green),
+      0 0 10px var(--neon-green),
+      0 0 21px var(--neon-green),
+      0 0 42px var(--neon-green);
+  }
+
+  .neon-text-pink {
+    text-shadow: 
+      0 0 7px var(--neon-pink),
+      0 0 10px var(--neon-pink),
+      0 0 21px var(--neon-pink),
+      0 0 42px var(--neon-pink);
+  }
+
+  /* 故障效果按钮 */
+  .glitch-btn {
+    @apply relative px-6 py-3 font-mono font-bold uppercase tracking-wider;
+    @apply bg-transparent border-2 border-neon-green text-neon-green;
+    @apply transition-all duration-300;
+  }
+
+  .glitch-btn:hover {
+    @apply bg-neon-green text-cyber-dark;
+    box-shadow: 
+      0 0 10px var(--neon-green),
+      0 0 40px var(--neon-green);
+  }
+
+  /* 网格背景 */
+  .cyber-grid {
+    background-image: 
+      linear-gradient(rgba(0, 255, 159, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 159, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* 解码动画容器 */
+  .decode-container {
+    @apply relative overflow-hidden;
+  }
+
+  .decode-container::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-neon-green/10 to-transparent;
+    animation: scan 2s linear infinite;
+  }
+
+  @keyframes scan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* 数据标签 */
+  .data-tag {
+    @apply inline-flex items-center px-2 py-1 text-xs font-mono;
+    @apply bg-cyber-dark border border-cyber-border rounded;
+  }
+
+  .data-tag-green {
+    @apply border-neon-green/50 text-neon-green;
+  }
+
+  .data-tag-pink {
+    @apply border-neon-pink/50 text-neon-pink;
+  }
+
+  .data-tag-blue {
+    @apply border-neon-blue/50 text-neon-blue;
+  }
+
+  .data-tag-red {
+    @apply border-neon-red/50 text-neon-red;
+  }
+}
+
+/* ============================================================
+   动画效果
+   ============================================================ */
+
+@layer utilities {
+  /* 脉冲发光 */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green);
+    }
+    50% {
+      box-shadow: 0 0 20px var(--neon-green), 0 0 40px var(--neon-green);
+    }
+  }
+
+  /* 故障闪烁 */
+  .glitch-flicker {
+    animation: glitch-flicker 3s linear infinite;
+  }
+
+  @keyframes glitch-flicker {
+    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+      opacity: 1;
+    }
+    20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+      opacity: 0.5;
+    }
+  }
+
+  /* 浮动效果 */
+  .float-animation {
+    animation: float-animation 6s ease-in-out infinite;
+  }
+
+  @keyframes float-animation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+}
+
+/* ============================================================
+   情绪颜色类
+   ============================================================ */
+
+.sentiment-angry { color: #ff3366; }
+.sentiment-happy { color: #00ff9f; }
+.sentiment-sad { color: #00d4ff; }
+.sentiment-neutral { color: #8888aa; }
+
+.bg-sentiment-angry { background-color: #ff3366; }
+.bg-sentiment-happy { background-color: #00ff9f; }
+.bg-sentiment-sad { background-color: #00d4ff; }
+.bg-sentiment-neutral { background-color: #8888aa; }
