@@ -1,4 +1,6 @@
+# ===========================
 # Python
+# ===========================
 __pycache__/
 *.py[cod]
 *$py.class
@@ -22,43 +24,107 @@ wheels/
 venv/
 .venv/
 ENV/
+env/
+.conda/
 
+# ===========================
 # Node.js
+# ===========================
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 .npm
 .yarn-integrity
 
+# Lock files (optional - some prefer to commit these)
+# package-lock.json
+# yarn.lock
+
+# ===========================
 # Next.js
+# ===========================
 .next/
 out/
+.vercel
 
-# IDE
+# ===========================
+# IDE & Editor
+# ===========================
 .idea/
 .vscode/
 *.swp
 *.swo
 *~
+*.sublime-project
+*.sublime-workspace
 
-# OS
+# ===========================
+# OS Files
+# ===========================
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
-# Environment
+# ===========================
+# Environment Variables
+# ===========================
 .env
 .env.local
-.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
 
-# Cache
+# ===========================
+# Cache & Logs
+# ===========================
 .cache/
 *.log
+logs/
 
-# Browser data (contains cookies)
+# ===========================
+# Browser Data (Contains Cookies - SENSITIVE!)
+# ===========================
 browser_data/
 
+# ===========================
 # Database
+# ===========================
 *.db
+*.sqlite
 *.sqlite3
 
-# Temp files
+# ===========================
+# Temporary Files
+# ===========================
 tmp/
 temp/
+*.tmp
+*.temp
+
+# ===========================
+# Test & Coverage
+# ===========================
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+coverage.xml
+*.cover
+test-results/
+playwright-report/
+
+# ===========================
+# Build Artifacts
+# ===========================
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
